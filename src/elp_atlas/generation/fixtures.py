@@ -7,7 +7,7 @@ def make_math_candidate_fixture(task_id: str = "math_fixture") -> CandidateTask:
     return CandidateTask(
         task_id=task_id,
         domain="math",
-        problem="If x + 2 = 5, what is x?",
+        problem="Solve the equation carefully: if x plus 2 equals 5, what value of x satisfies the equation?",
         reference_answer="3",
         verifier={"type": "exact_match", "spec": {"normalize_whitespace": True}},
         skill_record=SkillRecord(
