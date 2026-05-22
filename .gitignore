@@ -1,0 +1,12 @@
+.pytest_cache/
+__pycache__/
+*.pyc
+
+demo_ccb_debug/
+demo_ccb_run/
+
+.venv/
+venv/
+dist/
+build/
+*.egg-info/
