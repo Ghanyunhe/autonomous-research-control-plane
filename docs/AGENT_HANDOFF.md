@@ -1,5 +1,23 @@
 # Agent Handoff
 
+## Phase Status
+
+This project phase is intentionally paused at a stable green baseline.
+
+That means:
+
+- the current workflow foundation is considered strong enough to stop on purpose
+- the goal is not declared complete
+- future work should resume from the remaining `partial` in [`docs/COMPLETION_AUDIT.md`](/vepfs_hyh/hyh/projects/AutoResearchClaw/autonomous_research_campaign/docs/COMPLETION_AUDIT.md), not by reopening already-proved criteria
+
+Pause snapshot:
+
+- success criteria `1` through `6`: treated as proved
+- success criterion `7`: still `partial`
+- latest focused authoritative verification:
+  - `pytest tests/test_task_intent.py tests/test_campaign_state.py tests/test_cli.py tests/test_objective_evolver.py -q`
+  - `342 passed in 19.69s`
+
 ## Project Background
 
 `autonomous_research_campaign/` is a greenfield MVP for a multi-agent control plane focused on a single research question campaign.
