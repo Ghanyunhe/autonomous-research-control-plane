@@ -13,6 +13,7 @@ class DomainAEvaluationResult(BaseModel):
     total_examples: int
     passed_examples: int
     pass_rate: float
+    dataset_path: str | None = None
     skill_coverage: list[str] = Field(default_factory=list)
     notes: str = ""
 
@@ -45,6 +46,12 @@ def evaluate_domain_a(candidates: list[CandidateTask]) -> DomainAEvaluationResul
         skill_coverage=sorted(skill_coverage),
         notes="Synthetic Domain A benchmark result.",
     )
+
+
+def run_domain_a_dataset(path: Path) -> DomainAEvaluationResult:
+    candidates = load_domain_a_dataset(path)
+    result = evaluate_domain_a(candidates)
+    return result.model_copy(update={"dataset_path": str(path), "notes": "Local jsonl Domain A dataset evaluation."})
 
 
 def save_domain_a_result(path: Path, result: DomainAEvaluationResult) -> None:

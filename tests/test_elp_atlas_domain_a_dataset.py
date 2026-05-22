@@ -10,7 +10,7 @@ def test_load_domain_a_dataset_reads_jsonl_candidates() -> None:
 
     candidates = load_domain_a_dataset(path)
 
-    assert len(candidates) == 2
+    assert len(candidates) == 6
     assert candidates[0].task_id == "gsm8k_like_1"
     assert candidates[0].domain == "math"
 
@@ -21,6 +21,6 @@ def test_evaluate_domain_a_supports_real_dataset_candidates() -> None:
     result = evaluate_domain_a(load_domain_a_dataset(path))
 
     assert result.benchmark_name == "domain_a_tiny_math"
-    assert result.total_examples == 2
-    assert result.passed_examples == 2
+    assert result.total_examples == 6
+    assert result.passed_examples == 6
     assert result.pass_rate == 1.0
