@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 from pydantic import BaseModel, Field
@@ -16,8 +17,18 @@ class DomainAEvaluationResult(BaseModel):
     notes: str = ""
 
 
+def load_domain_a_dataset(path: Path) -> list[CandidateTask]:
+    candidates: list[CandidateTask] = []
+    for line in path.read_text().splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        candidates.append(CandidateTask.model_validate(json.loads(line)))
+    return candidates
+
+
 def evaluate_domain_a(candidates: list[CandidateTask]) -> DomainAEvaluationResult:
-    """Run a tiny synthetic Domain A evaluation over math fixtures."""
+    """Run a tiny Domain A evaluation over candidate tasks."""
     passed_examples = 0
     skill_coverage: set[str] = set()
     for candidate in candidates:
